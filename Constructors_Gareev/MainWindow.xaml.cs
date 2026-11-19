@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +47,31 @@ namespace Constructors_Gareev
             if (DeltaHeight - scroll.VerticalOffset < 140)
             {
                 CreateStudent(Step, Count);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            if (sfd.ShowDialog() == true)
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.FileName, false))
+                {
+                    sw.WriteLine("Список студентов:");
+                    sw.WriteLine("----------------------------");
+
+                    foreach (Classes.Student student in AllStudent)
+                    {
+                        sw.WriteLine("ФИО: " + student.GetFIO());
+                        sw.WriteLine("Стипендия: " + (student.Scholarship ? "Да" : "Нет"));
+                        sw.WriteLine("Курс: " + student.Course);
+                        sw.WriteLine("----------------------------");
+                    }
+                }
+
+                MessageBox.Show("Результат сохранён!");
             }
         }
     }
