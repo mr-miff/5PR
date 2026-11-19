@@ -54,6 +54,7 @@ namespace Constructors_Gareev
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
             if (sfd.ShowDialog() == true)
             {
                 using (StreamWriter sw = new StreamWriter(sfd.FileName, false))
