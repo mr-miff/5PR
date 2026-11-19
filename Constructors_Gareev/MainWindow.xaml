@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="Студенты КГАПОУ Авиатехникума" Height="450" Width="800">
     <Grid>
-        
+        <ScrollViewer x:Name="ScrollMain" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="StackPanelStudents"/>
+        </ScrollViewer>
     </Grid>
 </Window>
